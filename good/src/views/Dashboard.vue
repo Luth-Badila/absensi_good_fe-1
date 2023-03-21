@@ -486,6 +486,11 @@ import Tombol from "@/components/Tombol.vue";
 import { Icon } from "@iconify/vue";
 import ButtonList from '@/components/ButtonList.vue';
 
+import { useMahasiswaStore } from '@/store/userTestStore';
+
+//const transactionStore = useMahasiswaStore();
+//const { allTransaction } = storeToRefs(transactionStore);
+
   export default {
     name: "Dashboard",
     data() {
@@ -496,9 +501,9 @@ import ButtonList from '@/components/ButtonList.vue';
         // chart data area
 
         buttonItems: [
-          { label: 'Button 1' },
-          { label: 'Button 2' },
-          { label: 'Button 3' }
+          { label: 'Pegawai 1' },
+          { label: 'Pegawai 2' },
+          { label: 'Pegawai 3' }
         ],
         optionsArea: {
           xaxis: {

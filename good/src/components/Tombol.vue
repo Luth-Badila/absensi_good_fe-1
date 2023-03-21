@@ -11,7 +11,7 @@
         </span>
         <span class="text-left">
           <h1 class="font-bold text-xl dark:text-gray-200">
-            {{ label }} H
+            {{ label }}
           </h1>
           <p class="text-gray-400 dark:text-gray-200">online</p>
         </span>
