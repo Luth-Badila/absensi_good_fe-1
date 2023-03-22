@@ -9,7 +9,7 @@ import Vbadges from "../views/components/badges.vue";
 import Vbreadcumb from "../views/components/breadcumbs.vue";
 import Vbutton from "../views/components/button.vue";
 import Vcard from "../views/components/card.vue";
-var appname = " - Windzo Dashboard Admin Template";
+let appname = " - Windzo Dashboard Admin Template";
 
 const routes = [
   // Routes
