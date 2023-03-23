@@ -15,9 +15,9 @@
 
 <script>
 // vue Components
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Sidebar from "../src/components/Sidebar.vue";
+import Header from "../src/components/Header.vue";
+import Footer from "../src/components/Footer.vue";
 // npm-js
 import Scrollbar from "smooth-scrollbar";
 

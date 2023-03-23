@@ -32,7 +32,7 @@
           </svg>
         </button>
 
-        <button class="text-md text-indigo-800 ml-3 lg:block hidden px-5 p-2 rounded-md bg-indigo-200">Sign Up/Sign In</button>
+        <button class="text-md text-indigo-800 ml-3 block p-2 w-[200px] rounded-md bg-indigo-200">Sign Up/Sign In</button>
 
         <!-- <button class="mr-5 text-2xl text-gray-500">
           <Icon icon="clarity:notification-line" />
@@ -74,6 +74,7 @@
 <script>
 import { Icon } from "@iconify/vue";
 export default {
+  name: "Header",
   data() {
     return {
       menu: false,
