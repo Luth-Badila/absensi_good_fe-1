@@ -1,0 +1,93 @@
+{
+  "info": {
+    "_postman_id": "ce076f3f-f681-4f0e-af5c-b4473d5c65ae",
+    "name": "ABSEN-FR",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18158817"
+  },
+  "item": [
+    {
+      "name": "MENU",
+      "item": [
+        {
+          "name": "List",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "8C16C3D13211DB231DD030C341B1EFB5",
+                "type": "text"
+              },
+              {
+                "key": "x-token",
+                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2Nzk2NDUyNzcsImV4cCI6MTY3OTczMTY3N30.wPTV47jmRixJ6l0h1R8dbZRd5ka3kq0vpgswG8pFwTw",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "mamat@mamat.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://fr-absen.jogjaide.web.id/api/menu_service/all",
+              "protocol": "https",
+              "host": ["fr-absen", "jogjaide", "web", "id"],
+              "path": ["api", "menu_service", "all"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "8C16C3D13211DB231DD030C341B1EFB5",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "mamat@mamat.com",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "12345678",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://fr-absen.jogjaide.web.id/api/user/login",
+          "protocol": "https",
+          "host": ["fr-absen", "jogjaide", "web", "id"],
+          "path": ["api", "user", "login"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

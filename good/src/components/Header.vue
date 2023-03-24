@@ -31,8 +31,12 @@
             ></path>
           </svg>
         </button>
-
-        <button class="text-md text-indigo-800 ml-3 block p-2 w-[200px] rounded-md bg-indigo-200">Sign Up/Sign In</button>
+        <router-link to="/register" exact>
+          <button class="text-md text-indigo-800 ml-3 block p-2 w-[200px] rounded-md bg-indigo-200">Sign Up/Sign In</button>
+        </router-link>
+        <router-link to="/login" exact>
+          <button class="text-md text-indigo-800 ml-3 block p-2 w-[200px] rounded-md bg-indigo-200">Sign Up/Sign In</button>
+        </router-link>
 
         <!-- <button class="mr-5 text-2xl text-gray-500">
           <Icon icon="clarity:notification-line" />

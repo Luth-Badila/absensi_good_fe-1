@@ -9,7 +9,9 @@ import Vbadges from "../views/components/badges.vue";
 import Vbreadcumb from "../views/components/breadcumbs.vue";
 import Vbutton from "../views/components/button.vue";
 import Vcard from "../views/components/card.vue";
-let appname = " - Windzo Dashboard Admin Template";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
+let appname = " - iHadir-2";
 
 const routes = [
   // Routes
@@ -21,6 +23,18 @@ const routes = [
   },
 
   // Components based Routes
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+    meta: { title: "Login" + appname },
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: Register,
+    meta: { title: "Register" + appname },
+  },
   {
     path: "/component/alert",
     name: "Valert",

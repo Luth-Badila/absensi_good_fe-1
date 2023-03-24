@@ -2,12 +2,12 @@
   <!-- App -->
   <div class="flex bg-packed font-lexend dark:bg-gray-900">
     <div id="sidebar-scroll" class="flex-sidebar lg:flex-auto w-sidebar lg:block hidden bg-white dark:bg-gray-800 border-r-2 dark:border-gray-700 h-screen lg:z-0 z-40 overflow-auto lg:relative fixed">
-      <Sidebar />
+      <Sidebar v-if="!disabledNavigation" />
     </div>
     <div class="flex-auto w-full overflow-auto h-screen" id="body-scroll">
-      <Header />
+      <Header v-if="!disabledNavigation" />
       <router-view />
-      <Footer />
+      <Footer v-if="!disabledNavigation" />
     </div>
   </div>
   <!-- end app -->
@@ -23,11 +23,30 @@ import Scrollbar from "smooth-scrollbar";
 
 export default {
   name: "App",
-
   components: {
     Header,
     Footer,
     Sidebar,
+  },
+  data: () => ({
+    disabledNavigation: null,
+  }),
+  created() {
+    this.checkRoute();
+  },
+  methods: {
+    checkRoute() {
+      if (this.$route.name === "Login" || this.$route.name === "Register" || this.$route.name === "ForgotPassword") {
+        this.disabledNavigation = true;
+        return;
+      }
+      this.disabledNavigation = false;
+    },
+  },
+  watch: {
+    $route() {
+      this.checkRoute();
+    },
   },
   mounted() {
     Scrollbar.init(document.querySelector("#body-scroll"));
