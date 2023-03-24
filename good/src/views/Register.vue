@@ -1,11 +1,11 @@
 <template>
-  <div class="flex text-lg text-black overflow-hidden h-[100vh] justify-center self-center my-0 mx-auto w-[90%] lg:w-[100%]">
+  <div class="relative flex text-lg text-black overflow-hidden h-[100vh] justify-center self-center my-0 mx-auto w-[90%] lg:w-[100%] z-99">
     <form class="py-0 px-[10px] lg:px-[50px] relative flex flex-col flex-1 justify-center items-center">
       <p class="mb-[32px] text-black dark:text-white">
         Already have an account ?
         <router-link to="/login" exact> Login </router-link>
       </p>
-      <h2 class="text-center text-[#f2e6ff] lg:text-[32px] text-[40px] mb-[40px]">Create your WordlOfWord account</h2>
+      <h2 class="text-center text-[#f2e6ff] lg:text-[32px] text-[40px] mb-[40px] leading-10">Create your account</h2>
       <div class="w-[100%] max-w-[350px]">
         <div class="relative flex justify-center items-center mb-[8px]">
           <input type="text" class="w-[100%] border-none bg-[#f2f7f6] py-[4px] pr-[4px] pl-[30px] h-[50px] focus:outline-none" placeholder="First Name" />

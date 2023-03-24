@@ -15,7 +15,7 @@ import "./assets/sass/css/windzo.css";
 const pinia = createPinia();
 createApp(App).use(router, Icon).use(VueApexCharts).use(pinia).use(PerfectScrollbar).mount("#app");
 
-router.beforeEach((to, from, next) => {
-  document.querySelector(".flex-sidebar").classList.add("hidden");
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   document.querySelector(".flex-sidebar").classList.add("hidden");
+//   next();
+// });

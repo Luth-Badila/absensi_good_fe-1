@@ -8,11 +8,7 @@
             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5" />
           </svg>
         </button>
-        <!-- <h2
-          class="text-md text-indigo-800 ml-3 lg:block hidden px-5 p-2 rounded-md bg-indigo-200"
-        >
-          Welcome back, Nanang Rustianto
-        </h2> -->
+        <!-- <h2 class="text-md text-indigo-800 ml-3 lg:block hidden px-5 p-2 rounded-md bg-indigo-200">Welcome back, Nanang Rustianto</h2> -->
       </div>
       <div class="mr-5 flex">
         <div class="input-box border dark:bg-gray-900 dark:border-gray-700 rounded-md mr-5 hidden lg:w-search w-full box-border lg:flex md:flex focus-within:bg-gray-100 dark:focus-within:bg-gray-700">
@@ -31,24 +27,20 @@
             ></path>
           </svg>
         </button>
-        <router-link to="/register" exact>
-          <button class="text-md text-indigo-800 ml-3 block p-2 w-[200px] rounded-md bg-indigo-200">Sign Up/Sign In</button>
-        </router-link>
-        <router-link to="/login" exact>
-          <button class="text-md text-indigo-800 ml-3 block p-2 w-[200px] rounded-md bg-indigo-200">Sign Up/Sign In</button>
-        </router-link>
+
+        <!-- Notification and avatar dropdown menu -->
 
         <!-- <button class="mr-5 text-2xl text-gray-500">
           <Icon icon="clarity:notification-line" />
-        </button> -->
-        <!-- <button @click="menuToggle" @blur="menuToggleBlur">
+        </button>
+        <button @click="menuToggle" @blur="menuToggleBlur">
           <div class="user-avatar flex hover:bg-gray-100 dark:hover:bg-gray-700 p-1 cursor-pointer rounded-md">
             <img src="../assets/img/user.jpg" class="rounded-full mr-4 w-10 h-10 p-1 ring-1 ring-gray-300 dark:ring-gray-500" alt="" />
             <span class="text-md mt-4 text-gray-300"><Icon icon="bi:caret-down-fill" /></span>
           </div>
         </button> -->
-
-        <!-- <transition name="fade">
+        <!-- 
+        <transition name="fade">
           <div id="dropdownSmall" v-show="menu" class="block absolute right-10 mt-12 z-10 w-44 border dark:border-gray-700 bg-white dark:bg-gray-800 rounded divide-y dark:divide-gray-700 divide-gray-100 shadow">
             <div class="py-3 px-4 text-sm text-gray-900 dark:text-gray-200">
               <div>Logged As</div>
@@ -78,11 +70,9 @@
 <script>
 import { Icon } from "@iconify/vue";
 export default {
-  name: "Header",
   data() {
     return {
       menu: false,
-      user: false,
     };
   },
   components: {
