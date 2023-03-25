@@ -60,17 +60,6 @@
           </template>
         </menu-accordion>
       </div>
-      <div class="item mt-3">
-        <menu-accordion>
-          <template v-slot:icon>
-            <Icon icon="bi:layout-wtf" />
-          </template>
-          <template v-slot:title> Layouts </template>
-          <template v-slot:content>
-            <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">Coming Soon</button>
-          </template>
-        </menu-accordion>
-      </div>
     </div>
   </nav>
 </template>
