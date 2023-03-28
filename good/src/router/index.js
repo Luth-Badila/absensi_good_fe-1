@@ -11,6 +11,7 @@ import Vbutton from "../views/components/button.vue";
 import Vcard from "../views/components/card.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
+import Try from "../views/Try.vue";
 let appname = " - iHadir-2";
 
 const routes = [
@@ -28,6 +29,12 @@ const routes = [
     name: "Login",
     component: Login,
     meta: { title: "Login" + appname },
+  },
+  {
+    path: "/try",
+    name: "Try",
+    component: Try,
+    meta: { title: "Try" + appname },
   },
   {
     path: "/register",
