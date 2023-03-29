@@ -1,33 +1,22 @@
 <template>
   <div>
-    <div v-for="item in listItems" :key="item">
-      {{ item.data }}
-    </div>
+    <h2 class="text-white text-[3rem]" v-for="menu in menuItems" :key="menu.id">
+      {{ menu.nama_menu }}
+    </h2>
   </div>
 </template>
+
 <script>
 import axios from "axios";
+
 export default {
   data() {
     return {
-      listItems: [],
+      menuItems: [],
     };
   },
   methods: {
-    async getData() {
-      // const res = await axios.get("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
-      //   headers: {
-      //     "x-api-key": "8C16C3D13211DB231DD030C341B1EFB5",
-      //     "x-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2Nzk2NDUyNzcsImV4cCI6MTY3OTczMTY3N30.wPTV47jmRixJ6l0h1R8dbZRd5ka3kq0vpgswG8pFwTw",
-      //   },
-      // });
-      // const finalRes = await res.json();
-      // this.listItems = finalRes;
-      // const headers = new Headers();
-      // headers.append("x-api-key", "8C16C3D13211DB231DD030C341B1EFB5");
-      // headers.append("x-token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2Nzk2NDUyNzcsImV4cCI6MTY3OTczMTY3N30.wPTV47jmRixJ6l0h1R8dbZRd5ka3kq0vpgswG8pFwTw");
-      // headers: headers,
-
+    getMenu() {
       fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
         method: "GET",
         headers: {
@@ -35,16 +24,19 @@ export default {
           "x-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2Nzk5OTA0MTIsImV4cCI6MTY4MDA3NjgxMn0.KBOX6pj7S933PhjdozsYxngNseTQ7Jao-uM5Tsrpn0Q",
         },
       })
-        .then((response) => {
-          console.log(response);
+        .then((response) => response.json())
+        .then((menu) => {
+          console.log(menu.data.menu_service[0].nama_menu);
+          this.menuItems = menu.data.menu_service;
         })
         .catch((error) => {
-          console.error(error);
+          console.error(error.message);
         });
     },
   },
+
   mounted() {
-    this.getData();
+    this.getMenu();
   },
 };
 </script>

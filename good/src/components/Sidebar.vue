@@ -20,7 +20,7 @@
       <p class="font-medium text-gray-400 dark:text-gray-600">Menu</p>
       <div class="wrap-item mt-4 dark:text-gray-500">
         <div class="item">
-          <router-link to="/" exact class="lg:w-[212px] flex justify-center items-center text-left rounded-md box-border p-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+          <router-link to="/" exact class="w-full flex justify-center items-center text-left rounded-md box-border p-3 hover:bg-gray-100 dark:hover:bg-gray-700">
             <span class="mr-3 text-xl"><Icon icon="bxs:dashboard" /></span>
             <span class="w-full"> Dashboard </span>
           </router-link>
@@ -28,28 +28,17 @@
       </div>
 
       <div class="item mt-3">
-        <menu-accordion>
+        <menu-accordion v-for="menu in menuItems" :key="menu.id">
           <template v-slot:icon>
             <Icon icon="gg:components" />
           </template>
-          <template v-slot:title> Components </template>
+          <template v-slot:title> {{ menu.nama_menu }} </template>
           <template v-slot:content>
             <router-link to="/component/alert" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Alert </router-link>
-            <router-link to="/component/accordion" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Accordion </router-link>
-            <router-link to="/component/badge" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Badge </router-link>
-            <router-link to="/component/breadcumb" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Breadcumb </router-link>
-            <router-link to="/component/button" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Button </router-link>
-            <router-link to="/component/card" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Card </router-link>
-            <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">Dropdown</button>
-            <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">List Group</button>
-            <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">Modal</button>
-            <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">Nav</button>
-            <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">Pagination</button>
-            <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">Progress</button>
           </template>
         </menu-accordion>
       </div>
-      <div class="item mt-3">
+      <!-- <div class="item mt-3">
         <menu-accordion>
           <template v-slot:icon>
             <Icon icon="bi:layout-wtf" />
@@ -59,7 +48,7 @@
             <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">Coming Soon</button>
           </template>
         </menu-accordion>
-      </div>
+      </div> -->
     </div>
   </nav>
 </template>
@@ -75,11 +64,35 @@ export default {
     Icon,
     MenuAccordion,
   },
+  data() {
+    return {
+      menuItems: [],
+    };
+  },
   methods: {
     sidebarToggle: function () {
       document.querySelector(".flex-sidebar").classList.add("hidden");
     },
+    getMenu() {
+      fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
+        method: "GET",
+        headers: {
+          "x-api-key": "8C16C3D13211DB231DD030C341B1EFB5",
+          "x-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2Nzk5OTA0MTIsImV4cCI6MTY4MDA3NjgxMn0.KBOX6pj7S933PhjdozsYxngNseTQ7Jao-uM5Tsrpn0Q",
+        },
+      })
+        .then((response) => response.json())
+        .then((menu) => {
+          console.log(menu.data.menu_service[0].nama_menu);
+          this.menuItems = menu.data.menu_service;
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
+    },
   },
-  mounted() {},
+  mounted() {
+    this.getMenu();
+  },
 };
 </script>
