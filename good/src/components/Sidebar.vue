@@ -34,21 +34,10 @@
           </template>
           <template v-slot:title> {{ menu.nama_menu }} </template>
           <template v-slot:content>
-            <router-link to="/component/alert" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Alert </router-link>
+            <router-link :to="menu.path" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Alert </router-link>
           </template>
         </menu-accordion>
       </div>
-      <!-- <div class="item mt-3">
-        <menu-accordion>
-          <template v-slot:icon>
-            <Icon icon="bi:layout-wtf" />
-          </template>
-          <template v-slot:title> Layouts </template>
-          <template v-slot:content>
-            <button class="w-full text-left rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">Coming Soon</button>
-          </template>
-        </menu-accordion>
-      </div> -->
     </div>
   </nav>
 </template>
@@ -78,7 +67,7 @@ export default {
         method: "GET",
         headers: {
           "x-api-key": "8C16C3D13211DB231DD030C341B1EFB5",
-          "x-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2Nzk5OTA0MTIsImV4cCI6MTY4MDA3NjgxMn0.KBOX6pj7S933PhjdozsYxngNseTQ7Jao-uM5Tsrpn0Q",
+          "x-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAxNTQ5NjAsImV4cCI6MTY4MDI0MTM2MH0.DFB9FFCQtZEJB7WZxOXlCY96Ok_zNssZhisjyq5QMxY",
         },
       })
         .then((response) => response.json())

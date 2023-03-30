@@ -21,7 +21,7 @@ export default {
         method: "GET",
         headers: {
           "x-api-key": "8C16C3D13211DB231DD030C341B1EFB5",
-          "x-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2Nzk5OTA0MTIsImV4cCI6MTY4MDA3NjgxMn0.KBOX6pj7S933PhjdozsYxngNseTQ7Jao-uM5Tsrpn0Q",
+          "x-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAxNTQ5NjAsImV4cCI6MTY4MDI0MTM2MH0.DFB9FFCQtZEJB7WZxOXlCY96Ok_zNssZhisjyq5QMxY",
         },
       })
         .then((response) => response.json())
