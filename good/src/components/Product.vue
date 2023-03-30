@@ -68,7 +68,9 @@
 </template>
 
 <script>
+import { Icon } from "@iconify/vue";
 export default {
+  components: { Icon },
   data() {
     return {
       // for more guide apexchart.js
