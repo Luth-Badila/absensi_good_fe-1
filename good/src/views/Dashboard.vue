@@ -84,11 +84,6 @@ import Chart from "@/components/Chart.vue";
 import Product from "@/components/Product.vue";
 import Report from "@/components/Report.vue";
 
-import { useMahasiswaStore } from "@/store/userTestStore";
-
-//const transactionStore = useMahasiswaStore();
-//const { allTransaction } = storeToRefs(transactionStore);
-
 export default {
   name: "Dashboard",
   data() {

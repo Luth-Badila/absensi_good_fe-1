@@ -3,13 +3,29 @@
     <h2 class="text-white text-[3rem]" v-for="menu in menuItems" :key="menu.id">
       {{ menu.nama_menu }}
     </h2>
+    <p class="text-white text-[1rem]">Pinia</p>
+
+    <!-- Task List -->
+    <div class="max-w-[640px] my-[20px] mx-0">
+      <div v-for="task in taskStore.tasks" :key="task.id">
+        <TaskDetails :task="task" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import { useTaskStore } from "@/stores/TaskStore";
+import TaskDetails from "@/components/TaskDetails.vue";
 
 export default {
+  components: { TaskDetails },
+  setup() {
+    const taskStore = useTaskStore();
+
+    return { taskStore };
+  },
   data() {
     return {
       menuItems: [],
