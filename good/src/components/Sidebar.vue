@@ -34,7 +34,9 @@
           </template>
           <template v-slot:title> {{ menu.nama_menu }} </template>
           <template v-slot:content>
-            <router-link :to="menu.path" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Alert </router-link>
+            <div class="item">
+              <router-link exact :to="menu.path" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Alert </router-link>
+            </div>
           </template>
         </menu-accordion>
       </div>
@@ -56,6 +58,8 @@ export default {
   data() {
     return {
       menuItems: [],
+      key1: "8C16C3D13211DB231DD030C341B1EFB5",
+      key2: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAyNDM0NTcsImV4cCI6MTY4MDMyOTg1N30.htJtKHX3VriiGm_ejJ8_ksAtdl4sjMWygfftdu6Z2bY",
     };
   },
   methods: {
@@ -66,14 +70,14 @@ export default {
       fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
         method: "GET",
         headers: {
-          "x-api-key": "8C16C3D13211DB231DD030C341B1EFB5",
-          "x-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAxNTQ5NjAsImV4cCI6MTY4MDI0MTM2MH0.DFB9FFCQtZEJB7WZxOXlCY96Ok_zNssZhisjyq5QMxY",
+          "x-api-key": this.key1,
+          "x-token": this.key2,
         },
       })
         .then((response) => response.json())
-        .then((menu) => {
-          console.log(menu.data.menu_service[0].nama_menu);
-          this.menuItems = menu.data.menu_service;
+        .then((response) => {
+          console.log(response.data.menu_service);
+          sessionStorage.setItem("menuItems", JSON.stringify(response.data.menu_service));
         })
         .catch((error) => {
           console.error(error.message);
@@ -81,7 +85,11 @@ export default {
     },
   },
   mounted() {
-    this.getMenu();
+    if (sessionStorage.getItem("menuItems")) {
+      this.menuItems = JSON.parse(sessionStorage.getItem("menuItems"));
+    } else {
+      this.getMenu().then((data) => (this.menuItems = data.data.menu_service));
+    }
   },
 };
 </script>
