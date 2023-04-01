@@ -25,20 +25,14 @@
             <span class="w-full"> Dashboard </span>
           </router-link>
         </div>
-      </div>
-
-      <div class="item mt-3">
-        <menu-accordion v-for="menu in menuItems" :key="menu.id">
-          <template v-slot:icon>
-            <Icon icon="gg:components" />
-          </template>
-          <template v-slot:title> {{ menu.nama_menu }} </template>
-          <template v-slot:content>
-            <div class="item">
-              <router-link exact :to="menu.path" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700"> Alert </router-link>
+        <div class="item mt-3" v-for="menu in menuItems" :key="menu.id">
+          <router-link exact :to="menu.path" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+            <div class="flex items-center">
+              <span class="mr-3 text-xl"> <Icon icon="gg:components" /></span>
+              <span class="w-full"> {{ menu.nama_menu }} </span>
             </div>
-          </template>
-        </menu-accordion>
+          </router-link>
+        </div>
       </div>
     </div>
   </nav>

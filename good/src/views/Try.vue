@@ -12,6 +12,9 @@
       <TaskForm />
     </div>
 
+    <!-- Loading -->
+    <div v-if="loading" class="max-w-[640px] border-solid bg-[#ffe9a0] text-[#3a3a3a] py-[5px] text-center my-[30px] mx-auto">Loading tasks.......</div>
+
     <!-- Filter -->
     <nav class="flex items-center gap-3 text-white bg-purple-400 w-[200px] mx-auto">
       <button @click="filter = 'all'">All Tasks</button>
@@ -20,35 +23,43 @@
 
     <!-- Task List -->
     <div class="max-w-[640px] my-[20px] mx-auto" v-if="filter === 'all'">
-      <p class="text-white">You have {{ taskStore.totalCount }} tasks left to do</p>
-      <div v-for="task in taskStore.tasks" :key="task.id">
+      <p class="text-white">You have {{ totalCount }} tasks left to do</p>
+      <div v-for="task in tasks" :key="task.id">
         <TaskDetails :task="task" />
       </div>
     </div>
     <div class="max-w-[640px] my-[20px] mx-0" v-if="filter === 'favs'">
-      <p class="text-white">You have {{ taskStore.favCount }} favs left to do</p>
-      <div v-for="task in taskStore.favs" :key="task.id">
+      <p class="text-white">You have {{ favCount }} favs left to do</p>
+      <div v-for="task in favs" :key="task.id">
         <TaskDetails :task="task" />
       </div>
     </div>
+
+    <button @click="taskStore.$reset" class="text-white">Reset</button>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import { useTaskStore } from "@/stores/TaskStore";
 import TaskDetails from "@/components/TaskDetails.vue";
 import { ref } from "vue";
 import TaskForm from "../components/TaskForm.vue";
+import { storeToRefs } from "pinia";
 
 export default {
   components: { TaskDetails, TaskForm },
   setup() {
     const taskStore = useTaskStore();
 
+    const { tasks, loading, favs, totalCount, favCount } = storeToRefs(taskStore);
+
+    // fetch Tasks
+
+    taskStore.getTasks();
+
     const filter = ref("all");
 
-    return { taskStore, filter };
+    return { taskStore, filter, tasks, loading, favs, totalCount, favCount };
   },
   data() {
     return {
