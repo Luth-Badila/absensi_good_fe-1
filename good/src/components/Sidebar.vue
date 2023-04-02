@@ -25,14 +25,17 @@
             <span class="w-full"> Dashboard </span>
           </router-link>
         </div>
-        <div class="item mt-3" v-for="menu in menuItems" :key="menu.id">
+        <div v-for="menu in taskStore.menuItems" :key="menu.id">
+          <SideMenu :menu="menu" />
+        </div>
+        <!-- <div class="item mt-3" v-for="menu in menuItems" :key="menu.id">
           <router-link exact :to="menu.path" class="w-full text-left block rounded-md p-3 hover:bg-gray-100 dark:hover:bg-gray-700">
             <div class="flex items-center">
               <span class="mr-3 text-xl"> <Icon icon="gg:components" /></span>
               <span class="w-full"> {{ menu.nama_menu }} </span>
             </div>
           </router-link>
-        </div>
+        </div> -->
       </div>
     </div>
   </nav>
@@ -44,16 +47,24 @@
 <script>
 import { Icon } from "@iconify/vue";
 import MenuAccordion from "./MenuAccordion.vue";
+import SideMenu from "../components/SideMenu.vue";
+import { useTaskStore } from "@/stores/TaskStore";
 export default {
   components: {
     Icon,
     MenuAccordion,
+    SideMenu,
+  },
+  setup() {
+    const taskStore = useTaskStore();
+    taskStore.getMenu();
+    return { taskStore };
   },
   data() {
     return {
       menuItems: [],
       key1: "8C16C3D13211DB231DD030C341B1EFB5",
-      key2: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAyNDM0NTcsImV4cCI6MTY4MDMyOTg1N30.htJtKHX3VriiGm_ejJ8_ksAtdl4sjMWygfftdu6Z2bY",
+      key2: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAzMzcwMDMsImV4cCI6MTY4MDQyMzQwM30.IFGFX_exXVL3_2DqwNskA22C-_0zcJ4e15pNiZE4MEw",
     };
   },
   methods: {
@@ -82,7 +93,7 @@ export default {
     if (sessionStorage.getItem("menuItems")) {
       this.menuItems = JSON.parse(sessionStorage.getItem("menuItems"));
     } else {
-      this.getMenu().then((data) => (this.menuItems = data.data.menu_service));
+      this.getMenu();
     }
   },
 };

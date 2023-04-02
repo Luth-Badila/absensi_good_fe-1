@@ -5,6 +5,9 @@ export const useTaskStore = defineStore("taskStore", {
     tasks: [],
     loading: false,
     menuItems: [],
+    key1: "8C16C3D13211DB231DD030C341B1EFB5",
+    key2: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAyNDM0NTcsImV4cCI6MTY4MDMyOTg1N30.htJtKHX3VriiGm_ejJ8_ksAtdl4sjMWygfftdu6Z2bY",
+    name: "Rooney",
   }),
   getters: {
     favs() {
@@ -20,6 +23,56 @@ export const useTaskStore = defineStore("taskStore", {
     },
   },
   actions: {
+    async getMenu() {
+      const data = sessionStorage.getItem("menuItems");
+
+      if (data) {
+        this.menuItems = JSON.parse(data);
+      } else {
+        this.loading = true;
+        const res = await fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
+          method: "GET",
+          headers: {
+            "x-api-key": this.key1,
+            "x-token": this.key2,
+          },
+        });
+        const jsonData = await res.json();
+        sessionStorage.setItem("menuItems", JSON.stringify(jsonData));
+        this.menuItems = jsonData.data.menu_service;
+        this.loading = false;
+      }
+    },
+
+    // const res = await fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
+    //   method: "GET",
+    //   headers: {
+    //     "x-api-key": this.key1,
+    //     "x-token": this.key2,
+    //   },
+    // });
+    // const data = await res.json();
+    // const finalRes = sessionStorage.setItem("menuItems", JSON.stringify(res.data.menu_service));
+    // console.log((this.menuItems = finalRes));
+    // this.menuItems = data.data.menu_service;
+    // this.loading = false;
+    // },
+    // getMenu() {
+    //   fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
+    //     method: "GET",
+    //     headers: {
+    //       "x-api-key": this.key1,
+    //       "x-token": this.key2,
+    //     },
+    //   })
+    //     .then((response) => {
+    //       console.log(response.data.menu_service);
+    //       sessionStorage.setItem("menuItems", JSON.stringify(response.data.menu_service));
+    //     })
+    //     .catch((error) => {
+    //       console.error(error.message);
+    //     });
+    // },
     async getTasks() {
       this.loading = true;
       const res = await fetch("http://localhost:3000/tasks");

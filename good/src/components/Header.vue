@@ -11,7 +11,7 @@
         <!-- <h2 class="text-md text-indigo-800 ml-3 lg:block hidden px-5 p-2 rounded-md bg-indigo-200">Welcome back, Nanang Rustianto</h2> -->
       </div>
       <div class="mr-5 flex">
-        <div class="input-box border dark:bg-gray-900 dark:border-gray-700 rounded-md mr-5 hidden lg:w-search w-full box-border lg:flex md:flex focus-within:bg-gray-100 dark:focus-within:bg-gray-700">
+        <div class="input-box border bg-white dark:bg-gray-900 dark:border-gray-700 rounded-md mr-5 hidden lg:w-search w-full box-border lg:flex md:flex focus-within:bg-gray-100 dark:focus-within:bg-gray-700">
           <span class="text-3xl p-2 text-gray-400"><Icon icon="ei:search" /></span>
           <input type="text" placeholder="Search..." class="p-3 w-full bg-white dark:bg-gray-900 rounded-md outline-none focus:bg-gray-100 dark:focus:bg-gray-700" />
         </div>
