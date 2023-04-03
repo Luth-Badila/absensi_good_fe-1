@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import axios from "axios";
 
 export const useTaskStore = defineStore("taskStore", {
   state: () => ({
@@ -24,24 +25,36 @@ export const useTaskStore = defineStore("taskStore", {
   },
   actions: {
     async getMenu() {
-      const data = sessionStorage.getItem("menuItems");
-
-      if (data) {
-        this.menuItems = JSON.parse(data);
-      } else {
-        this.loading = true;
-        const res = await fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
-          method: "GET",
+      try {
+        const res = await axios.get("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
           headers: {
             "x-api-key": this.key1,
             "x-token": this.key2,
           },
         });
-        const jsonData = await res.json();
-        sessionStorage.setItem("menuItems", JSON.stringify(jsonData));
-        this.menuItems = jsonData.data.menu_service;
-        this.loading = false;
+        sessionStorage.setItem("menuItems", JSON.stringify(res.menuItems));
+        console.log(res.data.data.menu_service);
+        this.menuItems = res.data.data.menu_service;
+      } catch (error) {
+        console.log(error);
       }
+      // const data = sessionStorage.getItem("menuItems");
+      // if (data) {
+      //   this.menuItems = JSON.parse(data);
+      // } else {
+      //   this.loading = true;
+      //   const res = await fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
+      //     method: "GET",
+      //     headers: {
+      //       "x-api-key": this.key1,
+      //       "x-token": this.key2,
+      //     },
+      //   });
+      //   const jsonData = await res.json();
+      //   sessionStorage.setItem("menuItems", JSON.stringify(jsonData));
+      //   this.menuItems = jsonData.data.menu_service;
+      //   this.loading = false;
+      // }
     },
 
     // const res = await fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {

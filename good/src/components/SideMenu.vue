@@ -12,6 +12,7 @@
 <script>
 import { Icon } from "@iconify/vue";
 import { useTaskStore } from "../stores/TaskStore";
+
 export default {
   props: ["menu"],
   components: { Icon },

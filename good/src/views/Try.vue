@@ -46,7 +46,6 @@ import TaskForm from "../components/TaskForm.vue";
 import SideMenu from "../components/SideMenu.vue";
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
-import SideMenuVue from "../components/SideMenu.vue";
 
 export default {
   components: { TaskDetails, TaskForm, SideMenu },
