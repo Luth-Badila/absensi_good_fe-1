@@ -9,7 +9,7 @@
           <span class="bg-gray-700 absolute mt-2 dark:block hidden rounded-md py-1 px-2 text-xs text-gray-200">Dark mode</span>
         </h2>
       </router-link>
-      <button class="lg:hidden block float-right -mt-7 -mr-2" @click="sidebarToggle">
+      <button class="lg:hidden block float-right -mt-7 -mr-2" @click="taskStore.sidebarToggle">
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="25px" height="25px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
           <path fill="currentColor" d="M7.219 5.781L5.78 7.22L14.563 16L5.78 24.781l1.44 1.439L16 17.437l8.781 8.782l1.438-1.438L17.437 16l8.782-8.781L24.78 5.78L16 14.563z" />
         </svg>
@@ -68,9 +68,9 @@ export default {
     };
   },
   methods: {
-    sidebarToggle: function () {
-      document.querySelector(".flex-sidebar").classList.add("hidden");
-    },
+    // sidebarToggle() {
+    //   document.querySelector(".flex-sidebar").classList.add("hidden");
+    // },
     // getMenu() {
     //   fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
     //     method: "GET",

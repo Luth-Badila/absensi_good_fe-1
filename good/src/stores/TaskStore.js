@@ -6,8 +6,8 @@ export const useTaskStore = defineStore("taskStore", {
     tasks: [],
     loading: false,
     menuItems: [],
-    key1: "8C16C3D13211DB231DD030C341B1EFB5",
-    key2: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAyNDM0NTcsImV4cCI6MTY4MDMyOTg1N30.htJtKHX3VriiGm_ejJ8_ksAtdl4sjMWygfftdu6Z2bY",
+    key1: import.meta.env.VITE_APP_KEY1,
+    key2: import.meta.env.VITE_APP_KEY2,
     name: "Rooney",
   }),
   getters: {
@@ -24,6 +24,9 @@ export const useTaskStore = defineStore("taskStore", {
     },
   },
   actions: {
+    sidebarToggle() {
+      document.querySelector(".flex-sidebar").classList.add("hidden");
+    },
     async getMenu() {
       try {
         const res = await axios.get("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
