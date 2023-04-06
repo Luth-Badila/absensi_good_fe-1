@@ -60,41 +60,5 @@ export default {
     taskStore.getMenu();
     return { taskStore };
   },
-  data() {
-    return {
-      // menuItems: [],
-      // key1: "8C16C3D13211DB231DD030C341B1EFB5",
-      // key2: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlkIjoiOSJ9LCJpYXQiOjE2ODAzMzcwMDMsImV4cCI6MTY4MDQyMzQwM30.IFGFX_exXVL3_2DqwNskA22C-_0zcJ4e15pNiZE4MEw",
-    };
-  },
-  methods: {
-    // sidebarToggle() {
-    //   document.querySelector(".flex-sidebar").classList.add("hidden");
-    // },
-    // getMenu() {
-    //   fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
-    //     method: "GET",
-    //     headers: {
-    //       "x-api-key": this.key1,
-    //       "x-token": this.key2,
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((response) => {
-    //       console.log(response.data.menu_service);
-    //       sessionStorage.setItem("menuItems", JSON.stringify(response.data.menu_service));
-    //     })
-    //     .catch((error) => {
-    //       console.error(error.message);
-    //     });
-    // },
-  },
-  mounted() {
-    // if (sessionStorage.getItem("menuItems")) {
-    //   this.menuItems = JSON.parse(sessionStorage.getItem("menuItems"));
-    // } else {
-    //   this.getMenu();
-    // }
-  },
 };
 </script>

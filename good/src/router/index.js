@@ -25,7 +25,7 @@ const routes = [
 
   // Components based Routes
   {
-    path: "/test2",
+    path: "/login",
     name: "Login",
     component: Login,
     meta: { title: "Login" + appname },
@@ -37,7 +37,7 @@ const routes = [
     meta: { title: "Try" + appname },
   },
   {
-    path: "/menu_a",
+    path: "/register",
     name: "Register",
     component: Register,
     meta: { title: "Register" + appname },

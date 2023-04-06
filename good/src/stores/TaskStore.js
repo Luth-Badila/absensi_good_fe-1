@@ -36,7 +36,7 @@ export const useTaskStore = defineStore("taskStore", {
           },
         });
         sessionStorage.setItem("menuItems", res.menuItems);
-        console.log(res.data.data.menu_service);
+        // console.log(res.data.data.menu_service);
         this.menuItems = res.data.data.menu_service;
       } catch (error) {
         console.log(error);
