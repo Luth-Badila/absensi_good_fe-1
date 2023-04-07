@@ -76,7 +76,7 @@ export default {
         // console.log(response.data.token);
         sessionStorage.setItem("token", response.data.token);
         // Redirect to the homepage
-        this.$router.push("/");
+        // this.$router.push("/");
       } catch (error) {
         console.log(error);
       }

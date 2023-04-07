@@ -37,6 +37,8 @@ import Card from "@/components/Card.vue";
 import Chart from "@/components/Chart.vue";
 import Product from "@/components/Product.vue";
 import Report from "@/components/Report.vue";
+import axios from "axios";
+import { onMounted } from "vue";
 
 export default {
   name: "Dashboard",
@@ -48,6 +50,9 @@ export default {
     Chart,
     Product,
     Report,
+  },
+  setup() {
+    onMounted(() => {});
   },
   data() {
     return {
