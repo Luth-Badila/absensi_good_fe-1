@@ -9,6 +9,8 @@ export const useTaskStore = defineStore("taskStore", {
     key1: import.meta.env.VITE_APP_KEY1,
     key2: import.meta.env.VITE_APP_KEY2,
     name: "Rooney",
+    token: null,
+    currentUser: null,
   }),
   getters: {
     favs() {
@@ -36,59 +38,40 @@ export const useTaskStore = defineStore("taskStore", {
           },
         });
         sessionStorage.setItem("menuItems", res.data.data.menu_service);
-        // console.log(res.data.data.menu_service);
         this.menuItems = res.data.data.menu_service;
       } catch (error) {
         console.log(error);
       }
-      // const data = sessionStorage.getItem("menuItems");
-      // if (data) {
-      //   this.menuItems = JSON.parse(data);
-      // } else {
-      //   this.loading = true;
-      //   const res = await fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
-      //     method: "GET",
-      //     headers: {
-      //       "x-api-key": this.key1,
-      //       "x-token": this.key2,
-      //     },
-      //   });
-      //   const jsonData = await res.json();
-      //   sessionStorage.setItem("menuItems", JSON.stringify(jsonData));
-      //   this.menuItems = jsonData.data.menu_service;
-      //   this.loading = false;
-      // }
     },
+    async login(username, password) {
+      try {
+        const api = "https://fr-absen.jogjaide.web.id/api/user/login";
+        const data = {
+          username,
+          password,
+        };
+        const headers = {
+          "x-api-key": import.meta.env.VITE_APP_KEY1,
+          "content-type": "application/x-www-form-urlencoded",
+        };
+        const response = await axios.post(api, data, { headers });
+        const token = response.data.token;
+        this.token = token;
+        console.log(token);
+        sessionStorage.setItem("token", token);
+        // this.$router.push("/");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    // setToken(token) {
+    //   this.token = token;
+    //   sessionStorage.setItem("token", token);
+    // },
+    // setCurrentUser(user) {
+    //   this.currentUser = user;
+    // },
 
-    // const res = await fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
-    //   method: "GET",
-    //   headers: {
-    //     "x-api-key": this.key1,
-    //     "x-token": this.key2,
-    //   },
-    // });
-    // const data = await res.json();
-    // const finalRes = sessionStorage.setItem("menuItems", JSON.stringify(res.data.menu_service));
-    // console.log((this.menuItems = finalRes));
-    // this.menuItems = data.data.menu_service;
-    // this.loading = false;
-    // },
-    // getMenu() {
-    //   fetch("https://fr-absen.jogjaide.web.id/api/menu_service/all", {
-    //     method: "GET",
-    //     headers: {
-    //       "x-api-key": this.key1,
-    //       "x-token": this.key2,
-    //     },
-    //   })
-    //     .then((response) => {
-    //       console.log(response.data.menu_service);
-    //       sessionStorage.setItem("menuItems", JSON.stringify(response.data.menu_service));
-    //     })
-    //     .catch((error) => {
-    //       console.error(error.message);
-    //     });
-    // },
     async getTasks() {
       this.loading = true;
       const res = await fetch("http://localhost:3000/tasks");

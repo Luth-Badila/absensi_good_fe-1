@@ -22,65 +22,18 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import axios from "axios";
-import { useRouter } from "vue-router";
+import { useTaskStore } from "@/stores/TaskStore";
+import { ref } from "vue";
 export default {
-  // setup() {
-  //   const username = ref("mamat@mamat.com");
-  //   const password = ref("12345678");
-  //   const error = ref(null);
-  //   const router = useRouter();
-
-  //   const handleSubmit = async () => {
-  //     const api = "https://fr-absen.jogjaide.web.id/api/user/login";
-  //     const data = {
-  //       username: username.value,
-  //       password: password.value,
-  //     };
-  //     const headers = {
-  //       "x-api-key": import.meta.env.VITE_APP_KEY1,
-  //       "content-type": "application/x-www-form-urlencoded",
-  //     };
-  //     try {
-  //       const response = await axios.post(api, data, { headers });
-  //       console.log(response);
-  //       this.$router.push({ path: "/" });
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   return { handleSubmit, username, password, error, router };
-  // },
-  data() {
-    return {
-      username: "mamat@mamat.com",
-      password: "12345678",
-      response: "",
-      success: "",
+  setup() {
+    const taskStore = useTaskStore();
+    const username = ref("mamat@mamat.com");
+    const password = ref("12345678");
+    const login = () => {
+      taskStore.login(username.value, password.value);
     };
-  },
-  methods: {
-    async login() {
-      try {
-        const api = "https://fr-absen.jogjaide.web.id/api/user/login";
-        const data = {
-          username: this.username,
-          password: this.password,
-        };
-        const headers = {
-          "x-api-key": import.meta.env.VITE_APP_KEY1,
-          "content-type": "application/x-www-form-urlencoded",
-        };
-        const response = await axios.post(api, data, { headers });
-        // console.log(response.data.token);
-        sessionStorage.setItem("token", response.data.token);
-        // Redirect to the homepage
-        // this.$router.push("/");
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    return { taskStore, username, password, login };
   },
 };
 </script>
